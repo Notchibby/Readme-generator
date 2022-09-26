@@ -8,43 +8,75 @@ const generateMarkdown = require('./utils/generateMarkdown')
 const questions =[
     {
         type: 'input',
-        name: 'Project',
-        message: 'What is title of your Project?',
+        name: 'github',
+        message: 'What is your GitHub username?',
+      },
+
+      {
+        type: 'input',
+        name: 'email',
+        message: 'What is your email address?',
+      },
+
+      {
+        type: 'input',
+        name: 'project',
+        message: 'What is your projects name?',
       },
 
       {
         type: 'input',
         name: 'description',
-        message: 'Give a description of your Project',
+        message: 'Please write a short description of your project',
+      },
+
+      {
+        type: 'list',
+        name: 'license',
+        message: 'What kind of license should your project have?',
+        choices:['None', 'MIT', 'GNU GPLv3'],
       },
 
       {
         type: 'input',
         name: 'installation',
-        message: 'Provide a step by step guide on how to install your application',
+        message: 'What command should be run to install dependencies?',
       },
 
       {
         type: 'input',
-        name: 'instructions',
-        message: 'Provide instructions on how to use your application',
+        name: 'tests',
+        message: 'What command should be run to run tests?'
       },
+
+      {
+        type: 'input',
+        name: 'repo-instruction',
+        message: 'What does the user need to know about using the repo?',
+      },
+
+      {
+        type: 'input',
+        name: 'contribution',
+        message: 'What does the user need to know about contributing to the repo?',
+      },
+      
 ];
 
 
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, data) {
-    fs.writeFileSync(fileName,data)
+function writeToFile(fileName, ... answers) {
+    fs.writeFileSync(fileName, answers)
 }
 
 // TODO: Create a function to initialize app
 function init() {
     inquirer
 .prompt(questions)
-.then(data => {
-    console.log(data)
-    writeToFile('README.md', generateMarkdown(data))
+.then(answers => {
+    console.log(answers)
+    writeToFile('README.md', generateMarkdown(answers))
 })
 }
 
