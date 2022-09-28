@@ -34,7 +34,7 @@ const questions =[
         type: 'list',
         name: 'license',
         message: 'What kind of license should your project have?',
-        choices:['None', 'MIT', 'GNUGPLv3'],
+        choices:['None', 'MIT', 'GNU GPLv3', 'Apache 2.0', 'ISC'],
       },
 
       {
@@ -66,8 +66,8 @@ const questions =[
 
 
 // TODO: Create a function to write README file
-function writeToFile(fileName, ... answers) {
-    fs.writeFileSync(fileName, ... answers)
+function writeToFile(fileName, answers) {
+    fs.writeFileSync(fileName, answers)
 }
 
 // TODO: Create a function to initialize app
@@ -76,7 +76,9 @@ function init() {
 .prompt(questions)
 .then(answers => {
     console.log(answers)
-    writeToFile('README.md', generateMarkdown(answers))
+    writeToFile('README.md', generateMarkdown(answers), (err) =>
+    err ? console.log(err) : console.log('Successfully created README.md')
+  );
 
 })
 }
