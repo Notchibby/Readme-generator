@@ -8,4 +8,4 @@ This project aims to promote and reinforce our understanding of node js and inqu
 https://github.com/Notchibby/Readme-generator.git
 
 ## link to walkthrough video
-https://notchibby.github.io/weather-forcast-app/
+https://drive.google.com/file/d/1Eg5pO36io8CXubEKX80F9xBZ4kBQrydt/view
