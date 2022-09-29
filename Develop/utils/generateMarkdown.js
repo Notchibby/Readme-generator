@@ -38,7 +38,7 @@ function renderLicenseSection(license) {
 }
 
 // TODO: Create a function to generate markdown for README
-function generateMarkdown({github, email, project, description, license, installation, tests, Instruction, contribution}) {
+function generateMarkdown({github, email, project, description, license, installation, tests, Instruction, screenshot, contribution}) {
   return `# ${project} ${renderLicenseBadge(license)}
 
 ## Description
@@ -60,6 +60,8 @@ ${installation}
 ## Instructions
 ${Instruction}
 
+${screenshot}
+
 ## Tests
 
 ${tests}
@@ -70,7 +72,7 @@ ${contribution}
 
 ## Questions
 
-My other applications can be viewed at my github repository located at ${github}.
+My other applications can be viewed at my github repository located at '${github}'.
 
 For more information contact me at ${email}.
  

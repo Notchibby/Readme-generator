@@ -57,6 +57,13 @@ const questions =[
 
       {
         type: 'input',
+        name: 'screenshot',
+        message: 'To add a screenshot, create an assets/images folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax ![alt text](assets/images/screenshot.png)',
+      },
+
+
+      {
+        type: 'input',
         name: 'contribution',
         message: 'What does the user need to know about contributing to the repo?',
       },
@@ -74,10 +81,15 @@ function writeToFile(fileName, answers) {
 function init() {
     inquirer
 .prompt(questions)
-.then(answers => {
-    console.log(answers)
-    writeToFile('README.md', generateMarkdown(answers), (err) =>
-    err ? console.log(err) : console.log('Successfully created README.md')
+.then((answers) => {
+    console.log(answers);
+    writeToFile('README.md', generateMarkdown(answers), err => {
+      if (err){
+        console.error(err);
+      }else{
+        console.log('README.md created')
+      }
+    }
   );
 
 })
